@@ -14,6 +14,23 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :test do
+  # Pretty printed test output
+  gem 'turn', '0.8.2', :require => false
+  gem 'minitest'
+  gem "mocha"
+end
+group :development, :test do
+  gem 'nifty-generators'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'fabrication'
+  gem 'launchy'
+  gem 'database_cleaner'
+  gem 'libnotify'
+  gem 'rb-inotify'
+  gem 'guard-rspec'
+end
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
@@ -26,8 +43,3 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
-
-group :test do
-  # Pretty printed test output
-  gem 'turn', :require => false
-end
