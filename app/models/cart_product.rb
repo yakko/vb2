@@ -10,4 +10,8 @@ class CartProduct < ActiveRecord::Base
     amount * price_old
   end
   
+  def price_now_cents
+    (100 * price_now).to_i
+  end
+  
 end

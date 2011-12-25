@@ -1,0 +1,8 @@
+<body onload="form_post.submit();">
+<%= form_tag @post_url, :method=>:post, :id=>'form_post' do %>
+  <% @post_hash.each do |key, value| %>
+    <%= hidden_field_tag key, value %>
+  <% end %>
+<% end %>
+</body>
+

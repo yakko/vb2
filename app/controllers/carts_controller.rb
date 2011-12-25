@@ -22,8 +22,38 @@ class CartsController < ApplicationController
     render :show
   end
   
-
-
+  def checkout
+=begin
+    case params[:gateway]
+       when 'paypal'            then paypal()
+       when 'pagseguro'         then pagseguro()
+       when 'pagamentodigital'  then pagamentodigital()
+       else return redirect_to :current_cart
+    end
+=end
+    @post_url = "https://pagseguro.uol.com.br/checkout/checkout.jhtml"
+    
+    @post_hash = {
+      :email_cobranca => "email@business.com",
+      :tipo           => 'CP',
+      :moeda          => 'BRL',
+      :tipo_frete     => 'EN'#, #EN ou SD para Economica ou Sedex, se nao preencher ele pergunta ao cliente
+      #:extras         => -1 * cart.total_discount_cents(seller.try(:discount_rate))
+    }
+    
+    #@post_hash[:ref_transacao] = order.id
+    i = 1
+    current_cart.cart_products.each do |cp|
+      @post_hash["item_valor_#{i}"] = cp.price_now_cents
+      @post_hash["item_quant_#{i}"] = cp.amount
+      @post_hash["item_descr_#{i}"] = cp.product.name
+      @post_hash["item_id_#{i}"]    = cp.product_id
+      i += 1
+    end
+    
+    render :layout => false
+    #render :inline => "<h2>redirecionou para #{params[:gateway]}</h2>"
+  end
   
   # TODO: name these comments properly with all the matching URLs to each action
   # GET /carts
