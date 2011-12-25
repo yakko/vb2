@@ -34,7 +34,7 @@ class CartsController < ApplicationController
     @post_url = "https://pagseguro.uol.com.br/checkout/checkout.jhtml"
     
     @post_hash = {
-      :email_cobranca => "email@business.com",
+      :email_cobranca => APP_CONFIG[:business_email],
       :tipo           => 'CP',
       :moeda          => 'BRL',
       :tipo_frete     => 'EN'#, #EN ou SD para Economica ou Sedex, se nao preencher ele pergunta ao cliente

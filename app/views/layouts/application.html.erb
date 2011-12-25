@@ -17,6 +17,10 @@
       <%= link_to 'cart', :current_cart %>
 
       <hr />
+      
+      <%= debug APP_CONFIG %>
+      
+      <hr />
 
       <%= content_tag :h1, yield(:title) if show_title? %>
       <%= yield %>

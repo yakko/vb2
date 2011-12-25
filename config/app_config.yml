@@ -1,7 +1,5 @@
 defaults: &defaults
-  some_string: cool string
-  some_number: 100
-  awesome: true
+  business_email: tapgyn@gmail.com
 
 development:
   <<: *defaults
