@@ -1,0 +1,34 @@
+<% if false %>
+<pre>
+  formatos:
+  <%= link_to cart_path(@cart, :format=>'html'), cart_path(@cart, :format=>'html') %>
+  <%= link_to cart_path(@cart, :format=>'xml'),  cart_path(@cart, :format=>'xml') %>
+  <%= link_to cart_path(@cart, :format=>'json'), cart_path(@cart, :format=>'json') %>
+  <%= link_to cart_path(@cart, :format=>'yaml'), cart_path(@cart, :format=>'yaml') %>
+  <%= link_to "#{cart_path(@cart, :format=>'atom')} (in file app/views/cart/index.atom.builder)",  carts_path(@cart, :format=>'atom') %>
+</pre>
+<% end %>
+
+<p>
+  <b>Cart products count:</b>
+  <%= @cart.cart_products_count %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%= @cart.amount %>
+</p>
+
+<p>
+  <b>Price old:</b>
+  <%= @cart.price_old %>
+</p>
+
+<p>
+  <b>Price now:</b>
+  <%= @cart.price_now %>
+</p>
+
+
+<%= link_to 'Editar', edit_cart_path(@cart) %> |
+<%= link_to 'Ver Todos', carts_path %>

@@ -12,9 +12,14 @@
   <%= @product.name %>
 </p>
 
+
+<p>
+  <%= link_to "Adicionar ao Carrinho", cart_add_path(:product_id=>@product), :method=>:post %>
+</p>
+
 <p>
   <b>Text:</b>
-  <%= @product.text %>
+  <%= sanitize @product.text %>
 </p>
 
 <p>
@@ -41,7 +46,6 @@
   <b>Is special:</b>
   <%= @product.is_special %>
 </p>
-
 
 <%= link_to 'Editar', edit_product_path(@product) %> |
 <%= link_to 'Ver Todos', products_path %>

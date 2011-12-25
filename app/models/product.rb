@@ -1,4 +1,5 @@
 class Product < ActiveRecord::Base
+  has_many :cart_products
   validates :name, :presence=>true
   
   has_attached_file :img,

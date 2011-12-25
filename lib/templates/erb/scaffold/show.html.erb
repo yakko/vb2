@@ -7,7 +7,7 @@
   <%%= link_to <%= singular_table_name %>_path(@<%= singular_table_name %>, :format=>'yaml'), <%= singular_table_name %>_path(@<%= singular_table_name %>, :format=>'yaml') %>
   <%%= link_to "#{<%= singular_table_name %>_path(@<%= singular_table_name %>, :format=>'atom')} (in file app/views/<%= singular_table_name %>/index.atom.builder)",  <%= plural_table_name %>_path(@<%= singular_table_name %>, :format=>'atom') %>
 </pre>
-<% end %>
+<%% end %>
 
 <% attributes.each do |attribute| -%>
 <p>

@@ -1,4 +1,12 @@
 Vb2::Application.routes.draw do
+
+  
+  resources :carts
+  get 'cart' => 'carts#current', :as=>'current_cart'
+  post 'cart/add' => 'carts#add'
+  post 'cart/delete' => 'carts#delete'
+  
+
   resources :products
   root :to => 'products#index'
 

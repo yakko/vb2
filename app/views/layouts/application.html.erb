@@ -8,6 +8,13 @@
 </head>
 <body>
 
+<%= content_tag :h2, flash[:notice], :style=>'color:green;background:black' if flash[:notice] %>
+
+<%= link_to 'root', :root %>
+<%= link_to 'cart', :current_cart %>
+
+<hr />
+
 <%= yield %>
 
 </body>

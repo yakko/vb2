@@ -1,0 +1,40 @@
+<h1>Listando carts</h1>
+
+<% if false %>
+<pre>
+  formatos:
+  <%= link_to carts_path(:format=>'html'), carts_path(:format=>'html') %>
+  <%= link_to carts_path(:format=>'xml'),  carts_path(:format=>'xml') %>
+  <%= link_to carts_path(:format=>'json'), carts_path(:format=>'json') %>
+  <%= link_to carts_path(:format=>'yaml'), carts_path(:format=>'yaml') %>
+  <%= link_to "#{carts_path(:format=>'atom')} (in file app/views/carts/index.atom.builder)",  carts_path(:format=>'atom') %>
+</pre>
+<% end %>
+
+<table border="1">
+  <tr>
+    <th>Cart products</th>
+    <th>Amount</th>
+    <th>Total price old</th>
+    <th>Total price now</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @carts.each do |cart| %>
+  <tr>
+    <td><%= cart.cart_products.size %></td>
+    <td><%= cart.amount %></td>
+    <td><%= cart.total_price_old %></td>
+    <td><%= cart.total_price_now %></td>
+    <td><%= link_to 'Ver', cart %></td>
+    <td><%= link_to 'Editar', edit_cart_path(cart) %></td>
+    <td><%= link_to 'Remover', cart, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Novo Cart', new_cart_path %>
