@@ -46,7 +46,7 @@ class CartsController < ApplicationController
     current_cart.cart_products.each do |cp|
       @post_hash["item_valor_#{i}"] = cp.price_now_cents
       @post_hash["item_quant_#{i}"] = cp.amount
-      @post_hash["item_descr_#{i}"] = cp.product.name
+      @post_hash["item_descr_#{i}"] = ActiveSupport::Inflector.transliterate(cp.product.name)
       @post_hash["item_id_#{i}"]    = cp.product_id
       i += 1
     end
