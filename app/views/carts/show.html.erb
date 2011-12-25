@@ -11,7 +11,7 @@
 
 <p>
   <b>Cart products count:</b>
-  <%= @cart.cart_products_count %>
+  <%= @cart.cart_products.size %>
 </p>
 
 <p>
@@ -21,12 +21,12 @@
 
 <p>
   <b>Price old:</b>
-  <%= @cart.price_old %>
+  <%= @cart.total_price_old %>
 </p>
 
 <p>
   <b>Price now:</b>
-  <%= @cart.price_now %>
+  <%= @cart.total_price_now %>
 </p>
 
 

@@ -1,6 +1,7 @@
 class Product < ActiveRecord::Base
   has_many :cart_products
   validates :name, :presence=>true
+  validates :price_now, :numericality=>{:greater_than => 0}
   
   has_attached_file :img,
                     :url => "/files/products/:id/:filename",
