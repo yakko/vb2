@@ -1,9 +1,9 @@
 Vb2::Application.routes.draw do
 
   
-  resources :carts
-  get 'cart' => 'carts#current', :as=>'current_cart'
-  post 'cart/add' => 'carts#add'
+  resources :carts, :only => [:index, :show, :update]
+  get 'cart'         => 'carts#current', :as=>'current_cart'
+  post 'cart/add'    => 'carts#add'
   post 'cart/delete' => 'carts#delete'
   
 

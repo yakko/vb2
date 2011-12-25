@@ -5,7 +5,7 @@
   <%%= link_to <%= singular_table_name %>_path(@<%= singular_table_name %>, :format=>'xml'),  <%= singular_table_name %>_path(@<%= singular_table_name %>, :format=>'xml') %>
   <%%= link_to <%= singular_table_name %>_path(@<%= singular_table_name %>, :format=>'json'), <%= singular_table_name %>_path(@<%= singular_table_name %>, :format=>'json') %>
   <%%= link_to <%= singular_table_name %>_path(@<%= singular_table_name %>, :format=>'yaml'), <%= singular_table_name %>_path(@<%= singular_table_name %>, :format=>'yaml') %>
-  <%%= link_to "#{<%= singular_table_name %>_path(@<%= singular_table_name %>, :format=>'atom')} (in file app/views/<%= singular_table_name %>/index.atom.builder)",  <%= plural_table_name %>_path(@<%= singular_table_name %>, :format=>'atom') %>
+  <%%= link_to "#{<%= singular_table_name %>_path(@<%= singular_table_name %>, :format=>'atom')} (in file app/views/<%= plural_table_name %>/index.atom.builder)",  <%= plural_table_name %>_path(@<%= singular_table_name %>, :format=>'atom') %>
 </pre>
 <%% end %>
 

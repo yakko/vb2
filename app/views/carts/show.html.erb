@@ -1,3 +1,5 @@
+<h1>Carrinho</h1>
+
 <% if false %>
 <pre>
   formatos:
@@ -21,14 +23,50 @@
 
 <p>
   <b>Price old:</b>
-  <%= @cart.total_price_old %>
+  <%= number_to_currency @cart.total_price_old %>
 </p>
 
 <p>
   <b>Price now:</b>
-  <%= @cart.total_price_now %>
+  <%= number_to_currency @cart.total_price_now %>
 </p>
 
+<%= form_for(@cart) do |f| %>
+  <% if @cart.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cart.errors.count, "error") %> erros:</h2>
 
-<%= link_to 'Editar', edit_cart_path(@cart) %> |
-<%= link_to 'Ver Todos', carts_path %>
+      <ul>
+      <% @cart.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <table border="1">
+  <% @cart.cart_products.each do |cp| %>
+    <tr>
+      <td>
+        <%= link_to cp.product.name, cp.product %>
+      </td>
+      <td>
+        <%= f.fields_for :cart_products, cp do |f2| %>
+        
+          <%= f2.number_field :amount %>
+          
+        <% end %>
+      </td>
+      <td>
+        <%= f.submit "alterar quantidade" %>
+      </td>
+      <td>
+        <%= link_to "remover", cart_delete_path(:cart_product_id=>cp.id), :method=>:post %>
+      </td>
+    </tr>
+  <% end %>
+  </table>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
