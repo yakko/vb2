@@ -1,0 +1,15 @@
+%div
+  %ul#products
+    - @products.each do |product|
+      %li.product{:id=>"product_#{product.id}"}
+        = link_to product.name, product, :class=>'info'
+        = link_to product, :class=>'info' do
+          = image_tag product.img.url, :height=>150
+        - unless product.price_old.zero?
+          %span.price.old
+            =number_to_currency(product.price_old)
+        %span.price.selling
+          =number_to_currency(product.price_now)
+.clear
+
+= link_to "Novo Product", new_product_path

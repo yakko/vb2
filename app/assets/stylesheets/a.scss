@@ -1,0 +1,42 @@
+body { background: #CDCDCD url(/assets/vb/bg.jpg) repeat-x left top; }
+
+#header {
+  #logo {  }
+  span { float:right }
+}
+
+.clear { clear:both }
+
+
+li ul { margin: 0 1.5em; }
+li ol { margin: 0 1.5em; }
+ul {
+  margin: 0 1.5em 1.5em 1.5em;
+  list-style-type: disc;
+}
+ol {
+  margin: 0 1.5em 1.5em 1.5em;
+  list-style-type: decimal;
+}
+dl { margin: 0 0 1.5em 0; }
+dl dt { font-weight: bold; }
+dd { margin-left: 1.5em; }
+
+
+
+button, a.button, input.button {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  cursor: pointer;
+  margin: 0px;
+  padding: 3px;
+  text-decoration: none;
+  font-size: 1em;
+  color: inherit;
+}
+
+button img, a.button img, input.button img {
+  vertical-align: middle;
+  margin-right: 5px;
+}

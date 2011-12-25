@@ -7,23 +7,26 @@
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
   </head>
-  <body>
+  <body class="<%= controller.controller_name %>">
+    <div id="header">
+      <%= link_to root_path, :id=>'logo' do %>
+        <%= image_tag 'vb/logo.png' %>
+      <% end %>
+      <span>
+        <%= link_to 'cart', :current_cart %>
+      </span>
+    </div>
     <div id="container">
+
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :style=>'color:green;background:black', :id => "flash_#{name}" %>
+        <hr />
       <% end %>
-      
-      <%= link_to 'root', :root %>
-      <%= link_to 'cart', :current_cart %>
-
-      <hr />
-      
-      <%= debug APP_CONFIG %>
-      
-      <hr />
-
-      <%= content_tag :h1, yield(:title) if show_title? %>
       <%= yield %>
+      
+    </div>
+    <div id="footer">
+      <%= debug APP_CONFIG %>
     </div>
   </body>
 </html>
