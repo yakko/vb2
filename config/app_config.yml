@@ -1,0 +1,16 @@
+defaults: &defaults
+  some_string: cool string
+  some_number: 100
+  awesome: true
+
+development:
+  <<: *defaults
+  domain: 0.0.0.0:3000
+
+test:
+  <<: *defaults
+  domain: test.host
+
+production:
+  <<: *defaults
+  domain: example.com
