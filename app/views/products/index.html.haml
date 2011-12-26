@@ -15,7 +15,7 @@
                   =number_to_currency(product.price_now)
     %td#sidebar
       .sidebar_in
-        = link_to "Carrinho (#{current_cart.cart_products.size})", current_cart_path, :class=>'pay_button'
+        = link_to number_to_currency(current_cart.total_price_now), current_cart_path, :class=>'pay_button'
         = form_for(current_cart) do |f|
           %table
             %tfoot
@@ -29,10 +29,10 @@
                   %tr
                     %td
                       = image_tag(cp.product.img.url, :width=>32)
-                    %td.name
-                      = cp.product.name
+                    %td.name{:title=>cp.product.name}
+                      = truncate(cp.product.name, :length => 15)
                     %td
-                      = f2.number_field :amount, :style=>"width:50px"
+                      = f2.number_field :amount, :style=>"width:40px"
                     %td
                       = number_to_currency cp.price_now
                     -# %td

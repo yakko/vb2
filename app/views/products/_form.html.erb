@@ -22,26 +22,28 @@
     <%= f.cktext_area :text, :toolbar => 'Full', :width => 800, :height => 400 %>
   </div>
   <div class="field">
-    <%= f.label :price_now %><br />
-    <%= f.text_field :price_now %>
-  </div>
-  <div class="field">
     <%= f.label :price_old %><br />
     <%= f.text_field :price_old %>
   </div>
   <div class="field">
-    <%= f.label :img %><br />
+    <%= f.label :price_now %><br />
+    <%= f.text_field :price_now %>
+  </div>
+  <div class="field">
+    <%= f.label :img, "Imagem" %><br />
     <%= f.file_field :img %>
   </div>
   <div class="field">
-    <%= f.label :is_hidden %><br />
+    <%= f.label :is_hidden, "Não Exibir?" %><br />
     <%= f.check_box :is_hidden %>
   </div>
+  <% if false %>
   <div class="field">
-    <%= f.label :is_special %><br />
+    <%= f.label :is_special, "Especial?" %><br />
     <%= f.check_box :is_special %>
   </div>
+  <% end %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Salvar" %>
   </div>
 <% end %>

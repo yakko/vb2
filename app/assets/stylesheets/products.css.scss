@@ -17,7 +17,7 @@ body.products {
       
       img, span { display:block;margin: 0 auto 10px;text-align: center;color:#f90;font-size:20px; }
       
-      background: #fff url(http://aux.iconpedia.net/uploads/14780701233094954.png) no-repeat 15px 160px;
+      background: #fff url(/assets/vb/cart.png) no-repeat 15px 160px;
       
       &:hover { background-color:#efffef;box-shadow: #ccc 0 0 10px; }
     }
@@ -28,21 +28,20 @@ body.products {
       padding:20px;border-radius:5px;
       text-align: center;color:#f90;font-size:20px;text-decoration:none;
       
-      
-      background: #fff url(http://aux.iconpedia.net/uploads/14780701233094954.png) no-repeat 15px center;
+      background: #fff url(/assets/bt_pagseguro.gif) no-repeat 15px center;
       
       &:hover { background-color:#efffef;box-shadow: #ccc 0 0 10px; }
     }
     
     table {
-      tfoot td { text-align:right; }
-      tbody {
-        tr {
-          td { padding-top:10px;vertical-align:middle; }
-          td.name {
-            width:70px;overflow:hidden;
-          }
-        }
+      tfoot td {
+        text-align:right;
+        .input-submit { padding: 5px 10px; }
+      }
+      tbody td {
+        padding-top:10px;vertical-align:middle;
+        &.name { width:90px;padding-left:5px; }
+        
       }
     }
   }

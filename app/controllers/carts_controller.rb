@@ -1,10 +1,11 @@
 class CartsController < ApplicationController
 
-
+  #unused
   # GET /cart
   def current
     @cart = current_cart
-    render :show
+    #render :show
+    redirect_to :root
   end
 
   # POST /cart/add
@@ -12,14 +13,17 @@ class CartsController < ApplicationController
     @cart = current_cart
     @cart.add(params[:product_id])
     session[:cart_id] = @cart.id
-    render :show
+    #render :show
+    redirect_to :root
   end
 
+  #unused
   # POST /cart/delete
   def delete
     @cart = current_cart
     @cart.del(params[:cart_product_id]).to_s
-    render :show
+    #render :show
+    redirect_to :root
   end
   
   def checkout
