@@ -1,23 +1,61 @@
 body.products {
 
+  #sidebar {
+    width:210px;margin:0 10px;height:600px;float:right;display:block;
+    a.pay_button {
+      display:block;width:170px;
+      border:#ccc solid 1px;
+      padding:20px;border-radius:5px;
+      
+      background: #fff url(http://aux.iconpedia.net/uploads/14780701233094954.png) no-repeat 15px center;
+      
+      color:#f90;font-size:20px;text-align:center;text-decoration:none;
+      
+      &:hover { background-color:#efffef;box-shadow: #ccc 0 0 10px; }
+    }
+    
+    table {
+      width:100%;
+      tfoot td { text-align:right; }
+      tbody {
+        tr {
+          td { padding-top:10px; }
+          td.name {
+            width:70px;overflow:hidden;
+          }
+        }
+      }
+    }
+  }
+
   ul#products {
     list-style: none;
     margin: 0 auto;
+    padding:0;
 
     li {
       float: left;
       text-align: center;
-      width: 200px;
-      height: 250px;
-      margin: 0 10px 20px 10px;
+      width: 180px;
+      height: 270px;
+      margin: 0 10px 20px;
       background: white;
       border: #eee solid 1px;
       border-radius: 5px;
       box-shadow: #ccc 0 0 1px;
-      &.hover { box-shadow: #ccc 0 0 10px; }
-      img {
-        display: block;
-        margin: 10px auto;
+      .in {
+        margin: 20px;
+        display:block;
+      }
+      &.hover { box-shadow: #999 0 0 10px; }
+      a.image {
+        width: 140px;height:170px;
+        margin: 0;
+        padding:0;
+        img {
+          display: block;
+          margin: 10px auto;
+        }
       }
       span {
         display:block;
@@ -27,3 +65,4 @@ body.products {
     }
   }
 }
+

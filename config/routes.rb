@@ -5,7 +5,7 @@ Vb2::Application.routes.draw do
   get 'cart'         => 'carts#current', :as=>'current_cart'
   post 'cart/add'    => 'carts#add'
   post 'cart/delete' => 'carts#delete'
-  get 'cart/checkout/:gateway' => 'carts#checkout', :as => 'checkout'
+  get 'cart/checkout/:gateway' => 'carts#checkout', :as => 'checkout', :defaults=>{:gateway=>'pagseguro'}
 
   resources :products
   root :to => 'products#index'

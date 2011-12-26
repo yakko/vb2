@@ -99,7 +99,11 @@ class CartsController < ApplicationController
     @cart = Cart.find(params[:id])
     
     if @cart.update_attributes(params[:cart])
-      redirect_to :current_cart, notice: 'Carrinho foi atualizado.'
+      if params[:pay]
+        redirect_to checkout_path
+      else
+        redirect_to :back, notice: 'Carrinho foi atualizado.'
+      end
     else
       render :show
     end

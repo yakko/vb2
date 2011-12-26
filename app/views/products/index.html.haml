@@ -1,15 +1,42 @@
 %div
+  = render '/flags'
+  .clear
+  - unless current_cart.cart_products.size.zero?
+    #sidebar
+      =link_to "Carrinho (#{current_cart.cart_products.size})", current_cart_path, :class=>'pay_button'
+      = form_for(current_cart) do |f|
+        %table
+          %tfoot
+            %tr
+              %td{:colspan=>4}
+                =submit_tag "Atualizar"
+                =submit_tag "Pagar", :name=>'pay'
+          %tbody
+            - current_cart.cart_products.each do |cp|
+              = f.fields_for :cart_products, cp do |f2|
+                %tr
+                  %td
+                    = image_tag(cp.product.img.url, :width=>32)
+                  %td.name
+                    = cp.product.name
+                  %td
+                    = f2.number_field :amount, :style=>"width:50px"
+                  %td
+                    = number_to_currency cp.price_now
+                  -# %td
+                    -# link_to "x", cart_delete_path(:cart_product_id=>cp.id), :method=>:post 
   %ul#products
-    - @products.each do |product|
-      %li.product{:id=>"product_#{product.id}"}
-        = link_to product.name, product, :class=>'info'
-        = link_to product, :class=>'info' do
-          = image_tag product.img.url, :height=>150
-        - unless product.price_old.zero?
-          %span.price.old
-            =number_to_currency(product.price_old)
-        %span.price.selling
-          =number_to_currency(product.price_now)
+    - 4.times do
+      - @products.each do |product|
+        %li.product{:id=>"product_#{product.id}"}
+          .in
+            = link_to product, :class=>'image' do
+              = image_tag product.img.url, :width=>140
+            = link_to product.name, product, :class=>'info'
+            %span.price.old
+              =product.price_old.zero? ? raw('&nbsp;') : number_to_currency(product.price_old)
+            %span.price.selling
+              =number_to_currency(product.price_now)
 .clear
 
-= link_to "Novo Product", new_product_path
+= link_to "Cadatrar Produto", new_product_path

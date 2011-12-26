@@ -13,16 +13,18 @@
         <%= image_tag 'vb/logo.png' %>
       <% end %>
       <span>
-        <%= link_to 'cart', :current_cart %>
       </span>
     </div>
     <div id="container">
 
       <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :style=>'color:green;background:black', :id => "flash_#{name}" %>
+        <%= content_tag :div, msg, :style=>'color:lime;background:black', :id => "flash_#{name}" %>
         <hr />
       <% end %>
-      <%= yield %>
+      
+      <div id="content">
+        <%= yield %>
+      </div>
       
     </div>
     <div id="footer">
