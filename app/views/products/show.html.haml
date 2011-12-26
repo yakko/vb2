@@ -1,0 +1,32 @@
+%table#show
+  %tr 
+    %td#product
+      .product_in
+        %h1= @product.name
+        
+        
+        %h4{:style=>'text-align:right;'}
+          ="escondido |" if @product.is_hidden
+          ="especial |" if @product.is_special
+          = link_to 'Editar', edit_product_path(@product)
+
+        = sanitize @product.text
+    %td#sidebar
+      .sidebar_in
+        =link_to cart_add_path(:product_id=>@product), :method=>:post, :class=>'magic_button' do
+          = image_tag @product.img, :width=>100
+          %span
+            Comprar
+          %span
+            = number_to_currency @product.price_now
+
+
+
+
+- if false
+  formatos:
+  \#{link_to product_path(@product, :format=>'html'), product_path(@product, :format=>'html')}
+  \#{link_to product_path(@product, :format=>'xml'),  product_path(@product, :format=>'xml')}
+  \#{link_to product_path(@product, :format=>'json'), product_path(@product, :format=>'json')}
+  \#{link_to product_path(@product, :format=>'yaml'), product_path(@product, :format=>'yaml')}
+  \#{link_to "#{product_path(@product, :format=>'atom')} (in file app/views/product/index.atom.builder)",  products_path(@product, :format=>'atom')}
