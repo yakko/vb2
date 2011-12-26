@@ -9,6 +9,7 @@ gem 'paperclip'
 gem 'ckeditor'
 gem 'haml'
 gem 'rails-i18n'
+gem 'newrelic_rpm'
 
 
 # Gems used only for assets and not required
