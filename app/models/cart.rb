@@ -13,42 +13,34 @@ class Cart < ActiveRecord::Base
   
   #adds or increases an item on cart, may return nil if product doesn't exist
   def add(product_id)
-    #validations
-    product_id = product_id.to_s
+    puts "---"
     save if new_record?
-    #attempts to alter quantity
-    cart_products.each do |cp|
-      if cp.product_id.to_s == product_id
-        cp.amount += 1
-        cp.save
-        return cp
-      end
+    #detects
+    cp = cart_products.detect { |cp| cp.product_id.to_s == product_id.to_s }
+    #or builds
+    cp ||= begin
+      p = Product.find(product_id)
+      cart_products.build(:product_id => p.id, :price_old => p.price_old, :price_now => p.price_now)
+    rescue
+      nil
     end
-    #if product exists and hasn't been added, finally add it
-    return nil unless product = Product.find(product_id) rescue nil
-    r = cart_products.create :product_id => product_id,
-                             :price_old  => product.price_old,
-                             :price_now  => product.price_now,
-                             :amount     => 1
+    #increases amount
+    cp.amount += 1 if cp.present?
+    #save
     save
-    r
+    cp
   end
-  
+=begin
   #deletes an item from cart and returns it, returns false if it wasn't there
   def del(cart_product_id)
-    #validations
-    cart_product_id = cart_product_id.to_s
+    #detects
+    cp = cart_products.detect { |cp| cp.id.to_s == cart_product_id.to_s }
     #attempts to delete from collection
-    cart_products.each do |cp|
-      if cp.id.to_s == cart_product_id
-        cart_products.delete(cp)
-        save
-        return cp
-      end
-    end
-    #if product wasn't in the collection, returns false as a sign of failure
-    false
+    cart_products.delete(cp) and save if cp
+    #returns nil or the removed product
+    return cp
   end
+=end
   
   before_save do
     #restricts to positive amounts in cart items

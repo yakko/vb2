@@ -16,7 +16,7 @@ class CartsController < ApplicationController
     #render :show
     redirect_to :root
   end
-
+=begin
   #unused
   # POST /cart/delete
   def delete
@@ -25,7 +25,7 @@ class CartsController < ApplicationController
     #render :show
     redirect_to :root
   end
-  
+=end
   def checkout
 =begin
     case params[:gateway]
